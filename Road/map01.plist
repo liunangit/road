@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Map</key>
+	<string>map0.png</string>
+	<key>MapName</key>
+	<string>赤脊山</string>
+	<key>Towns</key>
+	<array>
+		<dict>
+			<key>TownID</key>
+			<string>0</string>
+			<key>TownName</key>
+			<string>湖畔镇</string>
+			<key>X</key>
+			<integer>220</integer>
+			<key>Y</key>
+			<integer>400</integer>
+			<key>Width</key>
+			<integer>150</integer>
+			<key>Height</key>
+			<integer>120</integer>
+			<key>Tasks</key>
+			<array>
+				<dict>
+					<key>TaskID</key>
+					<string>0</string>
+					<key>TaskTitle</key>
+					<string>黑石氏族的威胁</string>
+					<key>TaskContent</key>
+					<string>给湖畔镇的治安官马瑞斯带回10把破斧</string>
+					<key>TaskCost</key>
+					<integer>1</integer>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
