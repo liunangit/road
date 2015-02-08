@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		591D695C1A87A3E6001DDDC1 /* BRDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 591D695B1A87A3E6001DDDC1 /* BRDialog.m */; };
 		59A813941A87091C0014AFC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813931A87091C0014AFC6 /* main.m */; };
 		59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813961A87091C0014AFC6 /* AppDelegate.m */; };
 		59A8139A1A87091C0014AFC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813991A87091C0014AFC6 /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		591D695A1A87A3E6001DDDC1 /* BRDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRDialog.h; sourceTree = "<group>"; };
+		591D695B1A87A3E6001DDDC1 /* BRDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRDialog.m; sourceTree = "<group>"; };
 		59A8138E1A87091C0014AFC6 /* Road.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Road.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A813921A87091C0014AFC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59A813931A87091C0014AFC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,6 +87,8 @@
 				59A813C71A8718990014AFC6 /* BRTownModel.m */,
 				59A813C31A8717FC0014AFC6 /* BRTaskModel.h */,
 				59A813C41A8717FC0014AFC6 /* BRTaskModel.m */,
+				591D695A1A87A3E6001DDDC1 /* BRDialog.h */,
+				591D695B1A87A3E6001DDDC1 /* BRDialog.m */,
 				59A8139E1A87091C0014AFC6 /* Images.xcassets */,
 				59A813A01A87091C0014AFC6 /* LaunchScreen.xib */,
 				59A813911A87091C0014AFC6 /* Supporting Files */,
@@ -190,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A813C51A8717FC0014AFC6 /* BRTaskModel.m in Sources */,
+				591D695C1A87A3E6001DDDC1 /* BRDialog.m in Sources */,
 				59A8139A1A87091C0014AFC6 /* ViewController.m in Sources */,
 				59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */,
 				59A813C81A8718990014AFC6 /* BRTownModel.m in Sources */,
@@ -330,6 +336,7 @@
 				59A813B31A87091C0014AFC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

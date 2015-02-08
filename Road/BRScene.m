@@ -2,12 +2,13 @@
 //  BRScene.m
 //  Road
 //
-//  Created by honey.vi on 15/2/8.
+//  Created by liunan on 15/2/8.
 //  Copyright (c) 2015年 liunan. All rights reserved.
 //
 
 #import "BRScene.h"
 #import "BRMapModel.h"
+#import "BRDialog.h"
 
 #define DEBUG_TOWN_LOCALTION
 
@@ -161,7 +162,9 @@
     CGPoint point = [sender locationInView:sender.view];
     for (BRTownModel *townModel in self.mapModel.townList) {
         if (CGRectContainsPoint(townModel.rectInMap, point)) {
-            NSLog(@"%.0f, %.0f", point.x, point.y);
+            BRDialog *dialog = [[BRDialog alloc] init];
+            dialog.townModel = townModel;
+            [dialog showInView:self.view];
             break;
         }
     }
