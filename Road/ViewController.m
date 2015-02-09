@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "BRScene.h"
+#import "BRTaskManger.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [BRTaskManger defaultManager];
 }
 
 - (void)viewDidAppear:(BOOL)animated

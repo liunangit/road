@@ -19,6 +19,9 @@
 		59A813C51A8717FC0014AFC6 /* BRTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813C41A8717FC0014AFC6 /* BRTaskModel.m */; };
 		59A813C81A8718990014AFC6 /* BRTownModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813C71A8718990014AFC6 /* BRTownModel.m */; };
 		59A813CA1A871A5F0014AFC6 /* map01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59A813C91A871A5F0014AFC6 /* map01.plist */; };
+		B2DF5A121A887F1F00318C95 /* task.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2DF5A111A887F1F00318C95 /* task.plist */; };
+		B2DF5A151A8882AE00318C95 /* BRTaskManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF5A141A8882AE00318C95 /* BRTaskManger.m */; };
+		B2DF5A181A8885DA00318C95 /* BRAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF5A171A8885DA00318C95 /* BRAreaModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,11 @@
 		59A813C61A8718990014AFC6 /* BRTownModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRTownModel.h; sourceTree = "<group>"; };
 		59A813C71A8718990014AFC6 /* BRTownModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRTownModel.m; sourceTree = "<group>"; };
 		59A813C91A871A5F0014AFC6 /* map01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = map01.plist; sourceTree = "<group>"; };
+		B2DF5A111A887F1F00318C95 /* task.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = task.plist; sourceTree = "<group>"; };
+		B2DF5A131A8882AE00318C95 /* BRTaskManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRTaskManger.h; sourceTree = "<group>"; };
+		B2DF5A141A8882AE00318C95 /* BRTaskManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRTaskManger.m; sourceTree = "<group>"; };
+		B2DF5A161A8885DA00318C95 /* BRAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRAreaModel.h; sourceTree = "<group>"; };
+		B2DF5A171A8885DA00318C95 /* BRAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAreaModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +91,16 @@
 				59A813BC1A870A120014AFC6 /* BRScene.m */,
 				59A813C01A8717E90014AFC6 /* BRMapModel.h */,
 				59A813C11A8717E90014AFC6 /* BRMapModel.m */,
+				B2DF5A161A8885DA00318C95 /* BRAreaModel.h */,
+				B2DF5A171A8885DA00318C95 /* BRAreaModel.m */,
 				59A813C61A8718990014AFC6 /* BRTownModel.h */,
 				59A813C71A8718990014AFC6 /* BRTownModel.m */,
 				59A813C31A8717FC0014AFC6 /* BRTaskModel.h */,
 				59A813C41A8717FC0014AFC6 /* BRTaskModel.m */,
 				591D695A1A87A3E6001DDDC1 /* BRDialog.h */,
 				591D695B1A87A3E6001DDDC1 /* BRDialog.m */,
+				B2DF5A131A8882AE00318C95 /* BRTaskManger.h */,
+				B2DF5A141A8882AE00318C95 /* BRTaskManger.m */,
 				59A8139E1A87091C0014AFC6 /* Images.xcassets */,
 				59A813A01A87091C0014AFC6 /* LaunchScreen.xib */,
 				59A813911A87091C0014AFC6 /* Supporting Files */,
@@ -103,6 +115,7 @@
 				59A813921A87091C0014AFC6 /* Info.plist */,
 				59A813931A87091C0014AFC6 /* main.m */,
 				59A813C91A871A5F0014AFC6 /* map01.plist */,
+				B2DF5A111A887F1F00318C95 /* task.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -184,6 +197,7 @@
 				59A813A21A87091C0014AFC6 /* LaunchScreen.xib in Resources */,
 				59A813BF1A870A8E0014AFC6 /* map0@2x.png in Resources */,
 				59A8139F1A87091C0014AFC6 /* Images.xcassets in Resources */,
+				B2DF5A121A887F1F00318C95 /* task.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,8 +208,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2DF5A181A8885DA00318C95 /* BRAreaModel.m in Sources */,
 				59A813C51A8717FC0014AFC6 /* BRTaskModel.m in Sources */,
 				591D695C1A87A3E6001DDDC1 /* BRDialog.m in Sources */,
+				B2DF5A151A8882AE00318C95 /* BRTaskManger.m in Sources */,
 				59A8139A1A87091C0014AFC6 /* ViewController.m in Sources */,
 				59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */,
 				59A813C81A8718990014AFC6 /* BRTownModel.m in Sources */,

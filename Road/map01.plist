@@ -13,27 +13,30 @@
 			<string>0</string>
 			<key>TownName</key>
 			<string>湖畔镇</string>
-			<key>X</key>
-			<integer>220</integer>
-			<key>Y</key>
-			<integer>400</integer>
-			<key>Width</key>
-			<integer>150</integer>
-			<key>Height</key>
-			<integer>120</integer>
+			<key>Area</key>
+			<dict>
+				<key>X</key>
+				<integer>200</integer>
+				<key>Y</key>
+				<integer>400</integer>
+				<key>Width</key>
+				<integer>150</integer>
+				<key>Height</key>
+				<integer>120</integer>
+			</dict>
 			<key>Tasks</key>
 			<array>
-				<dict>
-					<key>TaskID</key>
-					<string>0</string>
-					<key>TaskTitle</key>
-					<string>黑石氏族的威胁</string>
-					<key>TaskContent</key>
-					<string>给湖畔镇的治安官马瑞斯带回10把破斧</string>
-					<key>TaskCost</key>
-					<integer>1</integer>
-				</dict>
+				<string>1</string>
 			</array>
+		</dict>
+	</array>
+	<key>BattleArea</key>
+	<array>
+		<dict>
+			<key>BattleAreaID</key>
+			<string></string>
+			<key>BattleAreaName</key>
+			<string></string>
 		</dict>
 	</array>
 </dict>

@@ -7,6 +7,7 @@
 //
 
 #import "BRMapModel.h"
+#import "BRAreaModel.h"
 
 @interface BRMapModel ()
 
@@ -21,7 +22,7 @@
     self.theMapSize = mapSize;
     
     for (BRTownModel *townModel in self.townList) {
-        townModel.mapSize = mapSize;
+        townModel.area.mapSize = mapSize;
     }
 }
 

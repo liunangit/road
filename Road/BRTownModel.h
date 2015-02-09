@@ -8,20 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class BRTaskModel;
+@class BRAreaModel;
 
 @interface BRTownModel : NSObject
 
 @property (nonatomic, copy) NSString *townID;
 @property (nonatomic, copy) NSString *townName;
-
-@property (nonatomic) NSUInteger xScale;
-@property (nonatomic) NSUInteger yScale;
-@property (nonatomic) NSUInteger widthScale;
-@property (nonatomic) NSUInteger heightScale;
+@property (nonatomic, strong) BRAreaModel *area;
 @property (nonatomic, strong) NSArray *taskList;
-
-@property (nonatomic, readonly) CGRect rectInMap;
-@property (nonatomic) CGSize mapSize;
 
 @end

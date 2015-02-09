@@ -14,5 +14,7 @@
 @property (nonatomic)       NSInteger costTime;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *content;
+@property (nonatomic)       NSInteger difficulty;
+@property (nonatomic, strong) NSArray *preTasks;
 
 @end

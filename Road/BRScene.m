@@ -9,6 +9,8 @@
 #import "BRScene.h"
 #import "BRMapModel.h"
 #import "BRDialog.h"
+#import "BRTaskManger.h"
+#import "BRAreaModel.h"
 
 #define DEBUG_TOWN_LOCALTION
 
@@ -62,36 +64,26 @@
         BRTownModel *townModel = [[BRTownModel alloc] init];
         townModel.townID = town[@"TownID"];
         townModel.townName = town[@"TownName"];
-        townModel.taskList = [self parseTaskModel:town[@"Tasks"]];
-        
-        townModel.xScale = [town[@"X"] unsignedIntegerValue];
-        townModel.yScale = [town[@"Y"] unsignedIntegerValue];
-        townModel.widthScale = [town[@"Width"] unsignedIntegerValue];
-        townModel.heightScale = [town[@"Height"] unsignedIntegerValue];
-        
+        townModel.taskList = town[@"Tasks"];
+        townModel.area = [self parseAraeMode:town[@"Area"]];
         [townModelList addObject:townModel];
     }
     
     return townModelList;
 }
 
-- (NSArray *)parseTaskModel:(NSArray *)taskList
+- (BRAreaModel *)parseAraeMode:(NSDictionary *)areDic
 {
-    if (taskList.count == 0) {
+    if (areDic.count == 0) {
         return nil;
     }
     
-    NSMutableArray *taskModelList = [NSMutableArray arrayWithCapacity:taskList.count];
-    for (NSDictionary *task in taskList) {
-        BRTaskModel *taskModel = [[BRTaskModel alloc] init];
-        taskModel.taskID = task[@"TaskID"];
-        taskModel.title = task[@"TaskTitle"];
-        taskModel.content = task[@"TaskContent"];
-        taskModel.costTime = [task[@"TaskCost"] integerValue];
-        [taskModelList addObject:taskModel];
-    }
-    
-    return taskModelList;
+    BRAreaModel *areaModel = [[BRAreaModel alloc] init];
+    areaModel.xScale = [areDic[@"X"] unsignedIntegerValue];
+    areaModel.yScale = [areDic[@"Y"] unsignedIntegerValue];
+    areaModel.widthScale = [areDic[@"Width"] unsignedIntegerValue];
+    areaModel.heightScale = [areDic[@"Height"] unsignedIntegerValue];
+    return areaModel;
 }
 
 - (void)setupScene
@@ -124,7 +116,7 @@
     
 #ifdef DEBUG_TOWN_LOCALTION
     for (BRTownModel *model in self.mapModel.townList) {
-        UIView *v = [[UIView alloc] initWithFrame:model.rectInMap];
+        UIView *v = [[UIView alloc] initWithFrame:model.area.rectInMap];
         v.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f];
         [self.mapImageView addSubview:v];
     }
@@ -161,7 +153,7 @@
 {
     CGPoint point = [sender locationInView:sender.view];
     for (BRTownModel *townModel in self.mapModel.townList) {
-        if (CGRectContainsPoint(townModel.rectInMap, point)) {
+        if (CGRectContainsPoint(townModel.area.rectInMap, point)) {
             BRDialog *dialog = [[BRDialog alloc] init];
             dialog.townModel = townModel;
             [dialog showInView:self.view];

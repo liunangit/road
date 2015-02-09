@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<dict>
+		<key>Title</key>
+		<string>黑石氏族的威胁</string>
+		<key>Content</key>
+		<string>给湖畔镇的治安官马瑞斯带回10把破斧</string>
+		<key>Cost</key>
+		<string>1</string>
+		<key>Difficulty</key>
+		<string>1</string>
+		<key>PreTask</key>
+		<array/>
+	</dict>
+</dict>
+</plist>
