@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class BRTaskModel;
+#import "BRTaskModel.h"
 
 @interface BRTaskManger : NSObject
 
 + (BRTaskManger *)defaultManager;
 - (BRTaskModel *)taskWithID:(NSString *)taskID;
+
+- (void)setTask:(NSString *)taskID status:(BRTaskStatus)status;
+- (BRTaskStatus)taskStatus:(NSString *)taskID;
 
 @end

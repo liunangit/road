@@ -7,11 +7,11 @@
 //
 
 #import "BRTaskManger.h"
-#import "BRTaskModel.h"
 
 @interface BRTaskManger ()
 
 @property (nonatomic, strong) NSMutableDictionary *taskDic;
+@property (nonatomic, strong) NSMutableDictionary *taskStatusDic;
 
 @end
 
@@ -33,6 +33,7 @@
 {
     self = [super init];
     if (self) {
+        _taskStatusDic = [[NSMutableDictionary alloc] init];
         NSString *configPath = [[NSBundle mainBundle] pathForResource:@"task" ofType:@"plist"];
         self.taskDic = [NSMutableDictionary dictionary];
         NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:configPath];
@@ -43,8 +44,10 @@
             if (taskModel) {
                 taskModel.taskID = taskID;
                 self.taskDic[taskID] = taskModel;
+                taskModel.status = [self taskStatus:taskID];
             }
         }
+        
     }
     return self;
 }
@@ -70,6 +73,16 @@
     taskModel.difficulty = [taskDic[@"Difficulty"] integerValue];
     taskModel.preTasks = taskDic[@"PreTask"];
     return taskModel;
+}
+
+- (void)setTask:(NSString *)taskID status:(BRTaskStatus)status
+{
+    self.taskStatusDic[taskID] = [NSNumber numberWithInteger:status];
+}
+
+- (BRTaskStatus)taskStatus:(NSString *)taskID
+{
+    return (BRTaskStatus)[self.taskStatusDic[taskID] integerValue];
 }
 
 @end

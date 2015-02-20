@@ -7,6 +7,7 @@
 //
 
 #import "BRTaskModel.h"
+#import "BRTaskManger.h"
 
 @implementation BRTaskModel
 

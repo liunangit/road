@@ -72,17 +72,18 @@
     return townModelList;
 }
 
-- (BRAreaModel *)parseAraeMode:(NSDictionary *)areDic
+- (BRAreaModel *)parseAraeMode:(NSDictionary *)areaDic
 {
-    if (areDic.count == 0) {
+    if (areaDic.count == 0) {
         return nil;
     }
     
     BRAreaModel *areaModel = [[BRAreaModel alloc] init];
-    areaModel.xScale = [areDic[@"X"] unsignedIntegerValue];
-    areaModel.yScale = [areDic[@"Y"] unsignedIntegerValue];
-    areaModel.widthScale = [areDic[@"Width"] unsignedIntegerValue];
-    areaModel.heightScale = [areDic[@"Height"] unsignedIntegerValue];
+    areaModel.xScale = [areaDic[@"X"] unsignedIntegerValue];
+    areaModel.yScale = [areaDic[@"Y"] unsignedIntegerValue];
+    areaModel.widthScale = [areaDic[@"Width"] unsignedIntegerValue];
+    areaModel.heightScale = [areaDic[@"Height"] unsignedIntegerValue];
+    areaModel.faction = (BRFaction)[areaDic[@"Faction"] integerValue];
     return areaModel;
 }
 

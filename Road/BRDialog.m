@@ -8,11 +8,14 @@
 
 #import "BRDialog.h"
 #import "BRTaskModel.h"
+#import "BRTaskManger.h"
+#import "BRSingleTaskDialog.h"
 
-@interface BRDialog () <UITableViewDataSource, UITableViewDelegate>
+@interface BRDialog () <UITableViewDataSource, UITableViewDelegate, BRSingleTaskDialogDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, weak) UIView *containerView;
+@property (nonatomic, weak) BRSingleTaskDialog *singleTaskDialog;
 
 @end
 
@@ -90,14 +93,33 @@
         cell.contentView.backgroundColor = [UIColor blackColor];
     }
     
-    BRTaskModel *taskModel = self.townModel.taskList[indexPath.row];
+    NSString *taskID = self.townModel.taskList[indexPath.row];
+    BRTaskModel *taskModel = [[BRTaskManger defaultManager] taskWithID:taskID];
     cell.textLabel.text = taskModel.title;
     return cell;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *taskID = self.townModel.taskList[indexPath.row];
+    BRTaskModel *taskModel = [[BRTaskManger defaultManager] taskWithID:taskID];
+    BRSingleTaskDialog *taskDialog = [[BRSingleTaskDialog alloc] init];
+    taskDialog.taskModel = taskModel;
+    [taskDialog showInDialog:self];
+    self.singleTaskDialog = taskDialog;
+    taskDialog.delegate = self;
+}
 
+- (void)touchesEnded:(NSSet *)touches  withEvent:(UIEvent *)event
+{
+    if (!self.singleTaskDialog) {
+        [self hide];
+    }
+}
+
+- (void)onRemoveSingleTaskDialog:(BRSingleTaskDialog *)taskDialog
+{
+    self.singleTaskDialog = nil;
 }
 
 @end
