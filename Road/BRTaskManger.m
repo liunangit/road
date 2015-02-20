@@ -72,6 +72,7 @@
     taskModel.costTime = [taskDic[@"Cost"] integerValue];
     taskModel.difficulty = [taskDic[@"Difficulty"] integerValue];
     taskModel.preTasks = taskDic[@"PreTask"];
+    taskModel.battleDesc = taskDic[@"BattleDesc"];
     return taskModel;
 }
 

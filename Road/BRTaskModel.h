@@ -24,5 +24,6 @@ typedef enum _BRTaskStatus {
 @property (nonatomic)       NSInteger difficulty;
 @property (nonatomic, strong) NSArray *preTasks;
 @property (nonatomic)       BRTaskStatus status;
+@property (nonatomic, copy) NSString *battleDesc;
 
 @end

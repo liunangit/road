@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		591D695C1A87A3E6001DDDC1 /* BRDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 591D695B1A87A3E6001DDDC1 /* BRDialog.m */; };
 		5979B6B11A95950E00D60A40 /* BRSingleTaskDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979B6B01A95950E00D60A40 /* BRSingleTaskDialog.m */; };
+		5979B6B41A9740CB00D60A40 /* alliance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979B6B21A9740CB00D60A40 /* alliance@2x.png */; };
+		5979B6B51A9740CC00D60A40 /* horde@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979B6B31A9740CB00D60A40 /* horde@2x.png */; };
+		5979B6B71A97426300D60A40 /* neutral@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979B6B61A97426300D60A40 /* neutral@2x.png */; };
+		5979B6BA1A975FAF00D60A40 /* BRTaskZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979B6B91A975FAF00D60A40 /* BRTaskZoneModel.m */; };
 		59A813941A87091C0014AFC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813931A87091C0014AFC6 /* main.m */; };
 		59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813961A87091C0014AFC6 /* AppDelegate.m */; };
 		59A8139A1A87091C0014AFC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813991A87091C0014AFC6 /* ViewController.m */; };
@@ -29,6 +33,12 @@
 		591D695B1A87A3E6001DDDC1 /* BRDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRDialog.m; sourceTree = "<group>"; };
 		5979B6AF1A95950E00D60A40 /* BRSingleTaskDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSingleTaskDialog.h; sourceTree = "<group>"; };
 		5979B6B01A95950E00D60A40 /* BRSingleTaskDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRSingleTaskDialog.m; sourceTree = "<group>"; };
+		5979B6B21A9740CB00D60A40 /* alliance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alliance@2x.png"; sourceTree = "<group>"; };
+		5979B6B31A9740CB00D60A40 /* horde@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horde@2x.png"; sourceTree = "<group>"; };
+		5979B6B61A97426300D60A40 /* neutral@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "neutral@2x.png"; sourceTree = "<group>"; };
+		5979B6B81A975FAF00D60A40 /* BRTaskZoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRTaskZoneModel.h; sourceTree = "<group>"; };
+		5979B6B91A975FAF00D60A40 /* BRTaskZoneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRTaskZoneModel.m; sourceTree = "<group>"; };
+		5979B6BB1A97732700D60A40 /* BRPublishHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPublishHeader.h; sourceTree = "<group>"; };
 		59A8138E1A87091C0014AFC6 /* Road.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Road.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A813921A87091C0014AFC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59A813931A87091C0014AFC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,6 +106,8 @@
 				B2DF5A171A8885DA00318C95 /* BRAreaModel.m */,
 				59A813C61A8718990014AFC6 /* BRTownModel.h */,
 				59A813C71A8718990014AFC6 /* BRTownModel.m */,
+				5979B6B81A975FAF00D60A40 /* BRTaskZoneModel.h */,
+				5979B6B91A975FAF00D60A40 /* BRTaskZoneModel.m */,
 				59A813C31A8717FC0014AFC6 /* BRTaskModel.h */,
 				59A813C41A8717FC0014AFC6 /* BRTaskModel.m */,
 				591D695A1A87A3E6001DDDC1 /* BRDialog.h */,
@@ -104,6 +116,7 @@
 				5979B6B01A95950E00D60A40 /* BRSingleTaskDialog.m */,
 				B2DF5A131A8882AE00318C95 /* BRTaskManger.h */,
 				B2DF5A141A8882AE00318C95 /* BRTaskManger.m */,
+				5979B6BB1A97732700D60A40 /* BRPublishHeader.h */,
 				59A8139E1A87091C0014AFC6 /* Images.xcassets */,
 				59A813911A87091C0014AFC6 /* Supporting Files */,
 				59A813B71A8709860014AFC6 /* Resources */,
@@ -125,6 +138,9 @@
 		59A813B71A8709860014AFC6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5979B6B61A97426300D60A40 /* neutral@2x.png */,
+				5979B6B21A9740CB00D60A40 /* alliance@2x.png */,
+				5979B6B31A9740CB00D60A40 /* horde@2x.png */,
 				59A813B81A8709860014AFC6 /* Maps */,
 			);
 			path = Resources;
@@ -195,8 +211,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5979B6B71A97426300D60A40 /* neutral@2x.png in Resources */,
 				59A813CA1A871A5F0014AFC6 /* map01.plist in Resources */,
+				5979B6B41A9740CB00D60A40 /* alliance@2x.png in Resources */,
 				59A813BF1A870A8E0014AFC6 /* map0@2x.png in Resources */,
+				5979B6B51A9740CC00D60A40 /* horde@2x.png in Resources */,
 				59A8139F1A87091C0014AFC6 /* Images.xcassets in Resources */,
 				B2DF5A121A887F1F00318C95 /* task.plist in Resources */,
 			);
@@ -213,6 +232,7 @@
 				59A813C51A8717FC0014AFC6 /* BRTaskModel.m in Sources */,
 				591D695C1A87A3E6001DDDC1 /* BRDialog.m in Sources */,
 				B2DF5A151A8882AE00318C95 /* BRTaskManger.m in Sources */,
+				5979B6BA1A975FAF00D60A40 /* BRTaskZoneModel.m in Sources */,
 				59A8139A1A87091C0014AFC6 /* ViewController.m in Sources */,
 				59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */,
 				59A813C81A8718990014AFC6 /* BRTownModel.m in Sources */,

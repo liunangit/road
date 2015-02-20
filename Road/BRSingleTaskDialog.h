@@ -25,6 +25,7 @@
 @property (nonatomic, weak) id<BRSingleTaskDialogDelegate> delegate;
 
 - (void)showInDialog:(BRDialog *)dialog;
+- (void)showInMap:(UIView *)mapView;
 - (void)hide;
 
 @end

@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *mapFile;
 @property (nonatomic, copy) NSString *mapName;
 @property (nonatomic, strong) NSArray *townList;
+@property (nonatomic, strong) NSArray *taskZoneList;
 @property (nonatomic) CGSize mapSize;
 
 @end

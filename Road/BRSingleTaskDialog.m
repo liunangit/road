@@ -9,21 +9,23 @@
 #import "BRSingleTaskDialog.h"
 #import "BRTaskModel.h"
 #import "BRDialog.h"
+#import "BRPublishHeader.h"
 
 @interface BRSingleTaskDialog ()
 
 @property (nonatomic, strong) UIView *containerView;
+@property (nonatomic) BOOL atBattleZone;
 
 @end
 
 @implementation BRSingleTaskDialog
 
-- (void)showInDialog:(BRDialog *)dialog
+- (void)setupUIAtTaskArea:(BOOL)atTaskArea withView:(UIView *)view
 {
-    self.frame = dialog.bounds;
+    self.frame = view.bounds;
     CGFloat containerWidth = 300;
     CGFloat containerHeight = 200;
-    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake((dialog.bounds.size.width - containerWidth)/2, (dialog.bounds.size.height - containerHeight)/2, containerWidth, containerHeight)];
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake((view.bounds.size.width - containerWidth)/2, (view.bounds.size.height - containerHeight)/2, containerWidth, containerHeight)];
     containerView.backgroundColor = [UIColor blackColor];
     [self addSubview:containerView];
     
@@ -38,7 +40,12 @@
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, titleLabel.bounds.size.height, containerWidth, 150)];
     textView.backgroundColor = [UIColor blackColor];
     textView.textColor = [UIColor whiteColor];
-    textView.text = self.taskModel.content;
+    if (atTaskArea) {
+        textView.text = self.taskModel.battleDesc;
+    }
+    else {
+        textView.text = self.taskModel.content;
+    }
     textView.font = [UIFont systemFontOfSize:15];
     textView.editable = NO;
     textView.selectable = NO;
@@ -46,23 +53,30 @@
     
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     NSString *okBtnTitle = nil;
-    switch (self.taskModel.status) {
-        case BRTAskStatus_Accept:
-        case BRTaskStatus_Done:
-            okBtnTitle = @"完成";
-            break;
-        case BRTaskStatus_Finished:
-            okBtnTitle = @"已完成";
-            break;
-        default:
-            okBtnTitle = @"接受";
-            break;
+    
+    if (atTaskArea) {
+        okBtnTitle = @"确认";
+    }
+    else {
+        switch (self.taskModel.status) {
+            case BRTAskStatus_Accept:
+            case BRTaskStatus_Done:
+                okBtnTitle = @"完成";
+                break;
+            case BRTaskStatus_Finished:
+                okBtnTitle = @"已完成";
+                break;
+            default:
+                okBtnTitle = @"接受";
+                break;
+        }
+        
+        if (self.taskModel.status == BRTAskStatus_Accept ||
+            self.taskModel.status == BRTaskStatus_Finished) {
+            okBtn.enabled = NO;
+        }
     }
     [okBtn setTitle:okBtnTitle forState:UIControlStateNormal];
-    if (self.taskModel.status == BRTAskStatus_Accept ||
-        self.taskModel.status == BRTaskStatus_Finished) {
-        okBtn.enabled = NO;
-    }
     [okBtn addTarget:self action:@selector(okAct) forControlEvents:UIControlEventTouchUpInside];
     okBtn.frame = CGRectMake(0, containerHeight - 20, containerWidth/2, 20);
     [okBtn setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
@@ -74,7 +88,20 @@
     [containerView addSubview:cancelBtn];
     [cancelBtn addTarget:self action:@selector(cancelAct) forControlEvents:UIControlEventTouchUpInside];
     
-    [dialog addSubview:self];
+    [view addSubview:self];
+    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.75f];
+}
+
+- (void)showInDialog:(BRDialog *)dialog
+{
+    self.atBattleZone = NO;
+    [self setupUIAtTaskArea:NO withView:dialog];
+}
+
+- (void)showInMap:(UIView *)mapView
+{
+    self.atBattleZone = YES;
+    [self setupUIAtTaskArea:YES withView:mapView];
 }
 
 - (void)cancelAct
@@ -84,11 +111,17 @@
 
 - (void)okAct
 {
-    if (self.taskModel.status == BRTaskStatus_New) {
-        self.taskModel.status = BRTAskStatus_Accept;
+    if (self.atBattleZone) {
+        self.taskModel.status = BRTaskStatus_Done;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTaskDoneNotification object:self.taskModel];
     }
-    else if (self.taskModel.status == BRTaskStatus_Done) {
-        self.taskModel.status = BRTaskStatus_Finished;
+    else {
+        if (self.taskModel.status == BRTaskStatus_New) {
+            self.taskModel.status = BRTAskStatus_Accept;
+        }
+        else if (self.taskModel.status == BRTaskStatus_Done) {
+            self.taskModel.status = BRTaskStatus_Finished;
+        }
     }
     [self hide];
 }

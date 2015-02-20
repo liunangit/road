@@ -7,7 +7,15 @@
 		<key>Title</key>
 		<string>黑石氏族的威胁</string>
 		<key>Content</key>
-		<string>给湖畔镇的治安官马瑞斯带回10把破斧</string>
+		<string>黑石氏族穿越了燃烧平原并攻下了北方的石堡要塞。他们以那座要塞为据点，劫掠湖畔镇北边的人们，吓得全镇的居民都不敢外出，只能躲在镇子里瑟瑟发抖。
+
+帮湖畔镇解决掉这个威胁吧。杀死黑石氏族的兽人，并带回来十把他们所用的破斧作为证明。
+
+尽管黑石氏族是在北方威胁着我们，但我们也收到了他们在赤脊山脉东南部出现的报告。你可以在那里找到他们，然后猎杀他们。
+
+给湖畔镇的治安官马瑞斯带回10把破斧。</string>
+		<key>BattleDesc</key>
+		<string>消灭黑石氏族</string>
 		<key>Cost</key>
 		<string>1</string>
 		<key>Difficulty</key>

@@ -8,6 +8,7 @@
 
 #import "BRMapModel.h"
 #import "BRAreaModel.h"
+#import "BRTaskZoneModel.h"
 
 @interface BRMapModel ()
 
@@ -23,6 +24,10 @@
     
     for (BRTownModel *townModel in self.townList) {
         townModel.area.mapSize = mapSize;
+    }
+    
+    for (BRTaskZoneModel *zoneModel in self.taskZoneList) {
+        zoneModel.area.mapSize = mapSize;
     }
 }
 

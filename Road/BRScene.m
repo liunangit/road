@@ -11,8 +11,11 @@
 #import "BRDialog.h"
 #import "BRTaskManger.h"
 #import "BRAreaModel.h"
+#import "BRTaskZoneModel.h"
+#import "BRSingleTaskDialog.h"
+#import "BRPublishHeader.h"
 
-#define DEBUG_TOWN_LOCALTION
+#define DEBUG_AREA_LOCALTION
 
 @interface BRScene ()
 
@@ -23,6 +26,15 @@
 @end
 
 @implementation BRScene
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didTaskDone:) name:kTaskDoneNotification object:nil];
+    }
+    return self;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -50,6 +62,7 @@
     mapModel.mapName = mapData[@"MapName"];
     mapModel.mapFile = mapData[@"Map"];
     mapModel.townList = [self parseTownModel:mapData[@"Towns"]];
+    mapModel.taskZoneList = [self parseTaskZones:mapData[@"TaskZones"]];
     return mapModel;
 }
 
@@ -70,6 +83,25 @@
     }
     
     return townModelList;
+}
+
+- (NSArray *)parseTaskZones:(NSArray *)taskZoneList
+{
+    if (taskZoneList.count == 0) {
+        return nil;
+    }
+    
+    NSMutableArray *zones = [NSMutableArray arrayWithCapacity:taskZoneList.count];
+    for (NSDictionary *zone in taskZoneList) {
+        BRTaskZoneModel *taskZone = [[BRTaskZoneModel alloc] init];
+        taskZone.area = [self parseAraeMode:zone[@"Area"]];
+        taskZone.zoneID = zone[@"ZoneID"];
+        taskZone.zoneName = zone[@"ZoneName"];
+        taskZone.tasks = zone[@"Tasks"];
+        [zones addObject:taskZone];
+    }
+    
+    return zones;
 }
 
 - (BRAreaModel *)parseAraeMode:(NSDictionary *)areaDic
@@ -114,14 +146,50 @@
     
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMap:)];
     [self.mapImageView addGestureRecognizer:self.tapGestureRecognizer];
-    
-#ifdef DEBUG_TOWN_LOCALTION
+    [self refreshFactions];
+  }
+
+- (void)refreshFactions
+{
     for (BRTownModel *model in self.mapModel.townList) {
+#ifdef DEBUG_AREA_LOCALTION
         UIView *v = [[UIView alloc] initWithFrame:model.area.rectInMap];
         v.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f];
         [self.mapImageView addSubview:v];
-    }
 #endif
+        [self setupFactionWithArea:model.area inMap:self.mapImageView];
+    }
+ 
+    for (BRTaskZoneModel *model in self.mapModel.taskZoneList) {
+#ifdef DEBUG_AREA_LOCALTION
+        UIView *v = [[UIView alloc] initWithFrame:model.area.rectInMap];
+        v.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f];
+        [self.mapImageView addSubview:v];
+#endif
+        [self setupFactionWithArea:model.area inMap:self.mapImageView];
+    }
+}
+
+- (void)setupFactionWithArea:(BRAreaModel *)area inMap:(UIView *)map
+{
+    static CGFloat factionSize = 30.0f;
+    UIImageView *factionImageView = [[UIImageView alloc] initWithFrame:CGRectMake((area.rectInMap.size.width - factionSize)/2 + area.rectInMap.origin.x, area.rectInMap.origin.y, factionSize, factionSize)];
+    factionImageView.alpha = 0.5f;
+    NSString *imageName = nil;
+    
+    switch (area.faction) {
+        case Horde:
+            imageName = @"horde.png";
+            break;
+        case Alliance:
+            imageName = @"alliance.png";
+            break;
+        default:
+            imageName = @"neutral.png";
+            break;
+    }
+    factionImageView.image = [UIImage imageNamed:imageName];
+    [map addSubview:factionImageView];
 }
 
 - (CGRect)mapViewSizeWithImageSize:(CGSize)mapSize
@@ -158,9 +226,37 @@
             BRDialog *dialog = [[BRDialog alloc] init];
             dialog.townModel = townModel;
             [dialog showInView:self.view];
+            return;
+        }
+    }
+    
+    for (BRTaskZoneModel *taskZone in self.mapModel.taskZoneList) {
+        if (CGRectContainsPoint(taskZone.area.rectInMap, point)) {
+            BRTaskModel *taskModel = [[BRTaskManger defaultManager] taskWithID:[taskZone.tasks firstObject]];
+            if (taskModel.status == BRTaskStatus_Done ||
+                taskModel.status == BRTaskStatus_Finished) {
+                return;
+            }
+            BRSingleTaskDialog *taskDialog = [[BRSingleTaskDialog alloc] init];
+            taskDialog.taskModel = taskModel;
+            [taskDialog showInMap:self.mapImageView];
+            return;
+        }
+    }
+}
+
+- (void)didTaskDone:(NSNotification *)notification
+{
+    BRTaskModel *doneModel = notification.object;
+    for (BRTaskZoneModel *taskZone in self.mapModel.taskZoneList) {
+        BRTaskModel *taskModel = [[BRTaskManger defaultManager] taskWithID:[taskZone.tasks firstObject]];
+        if ([taskModel.taskID isEqualToString:doneModel.taskID]) {
+            taskZone.area.faction = Alliance;
             break;
         }
     }
+
+    [self setupScene];
 }
 
 @end
