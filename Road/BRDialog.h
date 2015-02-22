@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "BRTownModel.h"
 
+@protocol BRDialogDelegate <NSObject>
+
+@optional
+- (void)onRemoveDialog:(UIView *)taskDialog;
+
+@end
+
 @interface BRDialog : UIView
 
 @property (nonatomic, strong) BRTownModel *townModel;
+@property (nonatomic, weak) id<BRDialogDelegate> delegate;
 
 - (void)showInView:(UIView *)view;
 - (void)hide;

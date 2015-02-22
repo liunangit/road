@@ -11,7 +11,7 @@
 #import "BRTaskManger.h"
 #import "BRSingleTaskDialog.h"
 
-@interface BRDialog () <UITableViewDataSource, UITableViewDelegate, BRSingleTaskDialogDelegate>
+@interface BRDialog () <UITableViewDataSource, UITableViewDelegate, BRDialogDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, weak) UIView *containerView;
@@ -47,6 +47,10 @@
 
 - (void)hide
 {
+    if ([self.delegate respondsToSelector:@selector(onRemoveDialog:)]) {
+        [self.delegate onRemoveDialog:self];
+    }
+    
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
     [self removeFromSuperview];
@@ -123,7 +127,7 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
-- (void)touchesEnded:(NSSet *)touches  withEvent:(UIEvent *)event
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (!self.singleTaskDialog) {
         [self hide];

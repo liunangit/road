@@ -23,5 +23,81 @@
 		<key>PreTask</key>
 		<array/>
 	</dict>
+	<key>2</key>
+	<dict>
+		<key>Title</key>
+		<string>通缉：范高雷中尉</string>
+		<key>Content</key>
+		<string>悬赏：范高雷
+
+恶行累累的豺狼人头目范高雷在湖畔镇及王国的敌人莫甘斯的指使下，带着暗皮豺狼人氏族到处为非作歹。镇长所罗门下了命令，悬赏杀死这个万恶的东西。将他的手掌割下来拿给镇长，以此证明他的死亡。
+
+去赤脊山找湖畔镇的所罗门镇长。</string>
+		<key>BattleDesc</key>
+		<string>杀死范高雷并将他的手掌割下，向湖畔镇的所罗门镇长复命。</string>
+		<key>Cost</key>
+		<string>2</string>
+		<key>Difficulty</key>
+		<string>2</string>
+		<key>PreTask</key>
+		<array/>
+	</dict>
+	<key>3</key>
+	<dict>
+		<key>Title</key>
+		<string>鱼人偷猎者</string>
+		<key>Content</key>
+		<string>鱼人们如今也成了一个问题。大群的鱼人渔民在止水湖沿岸下锚撒网，都快把湖里的鱼捞光了！我们得在他们把湖里的鱼都吃光之前把他们赶走！
+
+去猎杀那些鱼人！给我带回8片鱼人的鳍来，我会奖励你的。
+
+去赤脊山找湖畔镇的码头管理员巴伦。</string>
+		<key>BattleDesc</key>
+		<string>给湖畔镇的码头管理员巴伦带回8片鱼人的鳍。</string>
+		<key>Cost</key>
+		<string>1</string>
+		<key>Difficulty</key>
+		<string>1</string>
+		<key>PreTask</key>
+		<array/>
+	</dict>
+	<key>4</key>
+	<dict>
+		<key>Title</key>
+		<string>卖鱼</string>
+		<key>Content</key>
+		<string>止水湖的斑点太阳鱼是天下闻名的美味。它们总是供不应求……可我这里的存货已经不够了！
+
+给我带回10条鱼来，我会好好酬谢你的。哦，如果你不会捕鱼的话……可以从鱼人那里抢来！
+
+去赤脊山找湖畔镇的码头管理员巴伦。</string>
+		<key>BattleDesc</key>
+		<string>给湖畔镇的码头管理员巴伦带去10条斑点太阳鱼。</string>
+		<key>Cost</key>
+		<string>1</string>
+		<key>Difficulty</key>
+		<string>1</string>
+		<key>PreTask</key>
+		<array/>
+	</dict>
+	<key>5</key>
+	<dict>
+		<key>Title</key>
+		<string>赤脊山炖肉</string>
+		<key>Content</key>
+		<string>没什么能比烹制赤脊山炖肉更让我高兴的事了，但是现在有个小问题。自从兽人们出现之后，我就得没日没夜地忙着给暴风城军队的整整一个旅供应食物，我的食品柜早已是空空如也了。如果你能给我找来一些材料的话，我很乐意给你做点好吃的。
+
+只要给我带来5块硬秃鹫肉，5个巨型血牙野猪头和5份香脆蜘蛛肉就行了。
+
+去赤脊山找湖畔镇的厨师布雷纳。</string>
+		<key>BattleDesc</key>
+		<string>湖畔镇的厨师布雷纳想要5块硬秃鹫肉，5个巨型血牙野猪头和5份香脆蜘蛛肉。</string>
+		<key>Cost</key>
+		<string>2</string>
+		<key>Difficulty</key>
+		<string>1</string>
+		<key>PreTask</key>
+		<array/>
+	</dict>
 </dict>
 </plist>

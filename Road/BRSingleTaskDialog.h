@@ -7,22 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BRDialog.h"
 
 @class BRTaskModel;
-@class BRDialog;
 @class BRSingleTaskDialog;
 
-@protocol BRSingleTaskDialogDelegate <NSObject>
-
-@optional
-- (void)onRemoveSingleTaskDialog:(BRSingleTaskDialog *)taskDialog;
-
-@end
 
 @interface BRSingleTaskDialog : UIView
 
 @property (nonatomic, strong) BRTaskModel *taskModel;
-@property (nonatomic, weak) id<BRSingleTaskDialogDelegate> delegate;
+@property (nonatomic, weak) id<BRDialogDelegate> delegate;
 
 - (void)showInDialog:(BRDialog *)dialog;
 - (void)showInMap:(UIView *)mapView;

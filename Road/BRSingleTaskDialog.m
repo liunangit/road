@@ -56,7 +56,7 @@
     NSString *okBtnTitle = nil;
     
     if (atTaskArea) {
-        okBtnTitle = @"确认";
+        okBtnTitle = [NSString stringWithFormat:@"确认(%zd天)", self.taskModel.costTime];
     }
     else {
         switch (self.taskModel.status) {
@@ -136,10 +136,15 @@
 
 - (void)hide
 {
-    if ([self.delegate respondsToSelector:@selector(onRemoveSingleTaskDialog:)]) {
-        [self.delegate onRemoveSingleTaskDialog:self];
+    if ([self.delegate respondsToSelector:@selector(onRemoveDialog:)]) {
+        [self.delegate onRemoveDialog:self];
     }
     [self removeFromSuperview];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+        [self hide];
 }
 
 @end

@@ -17,14 +17,15 @@
 #import "BRStatusBar.h"
 #import "BRUtils.h"
 
-#define DEBUG_AREA_LOCALTION
+//#define DEBUG_AREA_LOCALTION
 
-@interface BRScene ()
+@interface BRScene () <BRDialogDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) BRMapModel *mapModel;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UIImageView *mapImageView;
 @property (nonatomic, strong) BRStatusBar *statusBar;
+@property (nonatomic, weak) UIView *overlay;
 
 @end
 
@@ -170,6 +171,7 @@
     }
     
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMap:)];
+    self.tapGestureRecognizer.delegate = self;
     [self.mapImageView addGestureRecognizer:self.tapGestureRecognizer];
     [self refreshFactions];
   }
@@ -198,8 +200,8 @@
 - (void)setupFactionWithArea:(BRAreaModel *)area inMap:(UIView *)map
 {
     static CGFloat factionSize = 30.0f;
-    UIImageView *factionImageView = [[UIImageView alloc] initWithFrame:CGRectMake((area.rectInMap.size.width - factionSize)/2 + area.rectInMap.origin.x, area.rectInMap.origin.y, factionSize, factionSize)];
-    factionImageView.alpha = 0.5f;
+    UIImageView *factionImageView = [[UIImageView alloc] initWithFrame:CGRectMake((area.rectInMap.size.width - factionSize)/2 + area.rectInMap.origin.x, (area.rectInMap.size.height- factionSize)/2 + area.rectInMap.origin.y, factionSize, factionSize)];
+    factionImageView.alpha = 0.8f;
     NSString *imageName = nil;
     
     switch (area.faction) {
@@ -254,7 +256,9 @@
     for (BRTownModel *townModel in self.mapModel.townList) {
         if (CGRectContainsPoint(townModel.area.rectInMap, point)) {
             BRDialog *dialog = [[BRDialog alloc] init];
+            dialog.delegate = self;
             dialog.townModel = townModel;
+            self.overlay = dialog;
             [dialog showInView:self.view];
             return;
         }
@@ -269,10 +273,27 @@
             }
             BRSingleTaskDialog *taskDialog = [[BRSingleTaskDialog alloc] init];
             taskDialog.taskModel = taskModel;
+            taskDialog.delegate = self;
+            self.overlay = taskDialog;
             [taskDialog showInMap:self.mapImageView];
             return;
         }
     }
+}
+
+- (void)onRemoveDialog:(UIView *)dialog
+{
+    if (self.overlay == dialog) {
+        self.overlay = nil;
+    }
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (self.overlay) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)didTaskDone:(NSNotification *)notification
