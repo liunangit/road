@@ -14,6 +14,8 @@
 #import "BRTaskZoneModel.h"
 #import "BRSingleTaskDialog.h"
 #import "BRPublishHeader.h"
+#import "BRStatusBar.h"
+#import "BRUtils.h"
 
 #define DEBUG_AREA_LOCALTION
 
@@ -22,6 +24,7 @@
 @property (nonatomic, strong) BRMapModel *mapModel;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) UIImageView *mapImageView;
+@property (nonatomic, strong) BRStatusBar *statusBar;
 
 @end
 
@@ -38,7 +41,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setupStatusBar];
     [self setupScene];
+    self.view.backgroundColor = [UIColor blackColor];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,6 +129,21 @@
     return areaModel;
 }
 
+- (void)setupStatusBar
+{
+    if (!self.statusBar) {
+        BRStatusBarType barType;
+        if ([BRUtils isPad]) {
+            barType = BRStatusBarHorizontal;
+        }
+        else {
+            barType = BRStatusBarVertical;
+        }
+        self.statusBar = [[BRStatusBar alloc] initWithType:barType];
+        [self.view addSubview:self.statusBar];
+    }
+}
+
 - (void)setupScene
 {
     if (self.mapImageView) {
@@ -194,28 +219,33 @@
 
 - (CGRect)mapViewSizeWithImageSize:(CGSize)mapSize
 {
-    if (fabs(mapSize.width) < 1 || fabs(mapSize.height) < 1) {
-        return CGRectZero;
-    }
-    
-    CGSize sceneSize = self.view.bounds.size;
-    CGFloat sceneScale = sceneSize.width / sceneSize.height;
-    CGFloat mapScale = mapSize.width / mapSize.height;
-    CGRect rect = CGRectZero;
-    
-    if (sceneScale > mapScale) {
-        rect.origin.y = 0;
-        rect.size.height = sceneSize.height;
-        rect.size.width = rect.size.height * mapScale;
-        rect.origin.x = (sceneSize.width - rect.size.width) / 2;
+    CGRect mapViewFrame = CGRectZero;
+    if (self.statusBar.type == BRStatusBarHorizontal) {
+        mapViewFrame.origin.y = kStatusBarHeight;
     }
     else {
-        rect.origin.x = 0;
-        rect.size.width = sceneSize.width;
-        rect.size.height = mapSize.height / mapSize.width * rect.size.width;
-        rect.origin.y = (sceneSize.height - rect.size.height) / 2;
+        mapViewFrame.origin.x = kStatusBarHeight;
     }
-    return rect;
+    
+    if (fabs(mapSize.width) < 1 || fabs(mapSize.height) < 1) {
+        return mapViewFrame;
+    }
+    
+    CGSize mapMaxSize = CGSizeMake(self.view.bounds.size.width - mapViewFrame.origin.x, self.view.bounds.size.height - mapViewFrame.origin.y);
+    CGFloat sceneScale = mapMaxSize.width / mapMaxSize.height;
+    CGFloat mapScale = mapSize.width / mapSize.height;
+    
+    if (sceneScale > mapScale) {
+        mapViewFrame.size.height = mapMaxSize.height;
+        mapViewFrame.size.width = mapViewFrame.size.height * mapScale;
+        mapViewFrame.origin.x += (mapMaxSize.width - mapViewFrame.size.width) / 2;
+    }
+    else {
+        mapViewFrame.size.width = mapMaxSize.width;
+        mapViewFrame.size.height = mapSize.height / mapSize.width * mapViewFrame.size.width;
+        mapViewFrame.origin.y += (mapMaxSize.height - mapViewFrame.size.height) / 2;
+    }
+    return mapViewFrame;
 }
 
 - (void)onTapMap:(UITapGestureRecognizer *)sender

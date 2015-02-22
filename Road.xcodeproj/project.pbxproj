@@ -13,6 +13,10 @@
 		5979B6B51A9740CC00D60A40 /* horde@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979B6B31A9740CB00D60A40 /* horde@2x.png */; };
 		5979B6B71A97426300D60A40 /* neutral@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979B6B61A97426300D60A40 /* neutral@2x.png */; };
 		5979B6BA1A975FAF00D60A40 /* BRTaskZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979B6B91A975FAF00D60A40 /* BRTaskZoneModel.m */; };
+		5979B6BE1A981F7000D60A40 /* BRStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979B6BD1A981F7000D60A40 /* BRStatusBar.m */; };
+		5979B6C11A9822CB00D60A40 /* BRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979B6C01A9822CB00D60A40 /* BRUtils.m */; };
+		5979B6C41A99D1F200D60A40 /* BRPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979B6C31A99D1F200D60A40 /* BRPlayerModel.m */; };
+		5979B6C71A99D2CB00D60A40 /* BRPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979B6C61A99D2CB00D60A40 /* BRPlayerManager.m */; };
 		59A813941A87091C0014AFC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813931A87091C0014AFC6 /* main.m */; };
 		59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813961A87091C0014AFC6 /* AppDelegate.m */; };
 		59A8139A1A87091C0014AFC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813991A87091C0014AFC6 /* ViewController.m */; };
@@ -39,6 +43,14 @@
 		5979B6B81A975FAF00D60A40 /* BRTaskZoneModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRTaskZoneModel.h; sourceTree = "<group>"; };
 		5979B6B91A975FAF00D60A40 /* BRTaskZoneModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRTaskZoneModel.m; sourceTree = "<group>"; };
 		5979B6BB1A97732700D60A40 /* BRPublishHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPublishHeader.h; sourceTree = "<group>"; };
+		5979B6BC1A981F7000D60A40 /* BRStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRStatusBar.h; sourceTree = "<group>"; };
+		5979B6BD1A981F7000D60A40 /* BRStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRStatusBar.m; sourceTree = "<group>"; };
+		5979B6BF1A9822CB00D60A40 /* BRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRUtils.h; sourceTree = "<group>"; };
+		5979B6C01A9822CB00D60A40 /* BRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRUtils.m; sourceTree = "<group>"; };
+		5979B6C21A99D1F200D60A40 /* BRPlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRPlayerModel.h; sourceTree = "<group>"; };
+		5979B6C31A99D1F200D60A40 /* BRPlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRPlayerModel.m; sourceTree = "<group>"; };
+		5979B6C51A99D2CB00D60A40 /* BRPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRPlayerManager.h; sourceTree = "<group>"; };
+		5979B6C61A99D2CB00D60A40 /* BRPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRPlayerManager.m; sourceTree = "<group>"; };
 		59A8138E1A87091C0014AFC6 /* Road.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Road.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A813921A87091C0014AFC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59A813931A87091C0014AFC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -98,6 +110,12 @@
 				59A813961A87091C0014AFC6 /* AppDelegate.m */,
 				59A813981A87091C0014AFC6 /* ViewController.h */,
 				59A813991A87091C0014AFC6 /* ViewController.m */,
+				5979B6BC1A981F7000D60A40 /* BRStatusBar.h */,
+				5979B6BD1A981F7000D60A40 /* BRStatusBar.m */,
+				5979B6C21A99D1F200D60A40 /* BRPlayerModel.h */,
+				5979B6C31A99D1F200D60A40 /* BRPlayerModel.m */,
+				5979B6C51A99D2CB00D60A40 /* BRPlayerManager.h */,
+				5979B6C61A99D2CB00D60A40 /* BRPlayerManager.m */,
 				59A813BB1A870A120014AFC6 /* BRScene.h */,
 				59A813BC1A870A120014AFC6 /* BRScene.m */,
 				59A813C01A8717E90014AFC6 /* BRMapModel.h */,
@@ -117,6 +135,8 @@
 				B2DF5A131A8882AE00318C95 /* BRTaskManger.h */,
 				B2DF5A141A8882AE00318C95 /* BRTaskManger.m */,
 				5979B6BB1A97732700D60A40 /* BRPublishHeader.h */,
+				5979B6BF1A9822CB00D60A40 /* BRUtils.h */,
+				5979B6C01A9822CB00D60A40 /* BRUtils.m */,
 				59A8139E1A87091C0014AFC6 /* Images.xcassets */,
 				59A813911A87091C0014AFC6 /* Supporting Files */,
 				59A813B71A8709860014AFC6 /* Resources */,
@@ -228,12 +248,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5979B6C41A99D1F200D60A40 /* BRPlayerModel.m in Sources */,
 				B2DF5A181A8885DA00318C95 /* BRAreaModel.m in Sources */,
 				59A813C51A8717FC0014AFC6 /* BRTaskModel.m in Sources */,
 				591D695C1A87A3E6001DDDC1 /* BRDialog.m in Sources */,
 				B2DF5A151A8882AE00318C95 /* BRTaskManger.m in Sources */,
 				5979B6BA1A975FAF00D60A40 /* BRTaskZoneModel.m in Sources */,
+				5979B6C11A9822CB00D60A40 /* BRUtils.m in Sources */,
 				59A8139A1A87091C0014AFC6 /* ViewController.m in Sources */,
+				5979B6C71A99D2CB00D60A40 /* BRPlayerManager.m in Sources */,
+				5979B6BE1A981F7000D60A40 /* BRStatusBar.m in Sources */,
 				59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */,
 				59A813C81A8718990014AFC6 /* BRTownModel.m in Sources */,
 				59A813BD1A870A120014AFC6 /* BRScene.m in Sources */,

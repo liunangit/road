@@ -17,10 +17,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    
+//    [UIApplication sharedApplication].statusBarHidden = YES;
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [window makeKeyAndVisible];
     self.window = window;
+//    window.backgroundColor = [UIColor purpleColor];
     
     ViewController *baseController = [[ViewController alloc] init];
     window.rootViewController = baseController;

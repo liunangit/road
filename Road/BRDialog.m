@@ -58,6 +58,18 @@
     return 30;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc] init];
+    footerView.backgroundColor = [UIColor blackColor];
+    return footerView;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 20;
@@ -108,6 +120,7 @@
     [taskDialog showInDialog:self];
     self.singleTaskDialog = taskDialog;
     taskDialog.delegate = self;
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)touchesEnded:(NSSet *)touches  withEvent:(UIEvent *)event

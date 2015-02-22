@@ -2,7 +2,7 @@
 //  BRSingleTaskDialog.m
 //  Road
 //
-//  Created by honey.vi on 15/2/19.
+//  Created by liunan on 15/2/19.
 //  Copyright (c) 2015年 liunan. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import "BRTaskModel.h"
 #import "BRDialog.h"
 #import "BRPublishHeader.h"
+#import "BRPlayerManager.h"
 
 @interface BRSingleTaskDialog ()
 
@@ -89,7 +90,13 @@
     [cancelBtn addTarget:self action:@selector(cancelAct) forControlEvents:UIControlEventTouchUpInside];
     
     [view addSubview:self];
-    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.75f];
+    
+    if (atTaskArea) {
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.75f];
+    }
+    else {
+        self.backgroundColor = [UIColor clearColor];
+    }
 }
 
 - (void)showInDialog:(BRDialog *)dialog
@@ -114,6 +121,7 @@
     if (self.atBattleZone) {
         self.taskModel.status = BRTaskStatus_Done;
         [[NSNotificationCenter defaultCenter] postNotificationName:kTaskDoneNotification object:self.taskModel];
+        [[BRPlayerManager defaultManager] addDate:self.taskModel.costTime];
     }
     else {
         if (self.taskModel.status == BRTaskStatus_New) {
