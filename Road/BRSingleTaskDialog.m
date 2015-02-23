@@ -144,7 +144,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-        [self hide];
+    [self hide];
 }
 
 @end

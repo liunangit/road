@@ -111,7 +111,27 @@
     
     NSString *taskID = self.townModel.taskList[indexPath.row];
     BRTaskModel *taskModel = [[BRTaskManger defaultManager] taskWithID:taskID];
-    cell.textLabel.text = taskModel.title;
+    NSString *cellText = nil;
+    
+    if (taskModel.status == BRTaskStatus_New) {
+        cellText = taskModel.title;
+    }
+    else if (taskModel.status == BRTAskStatus_Accept) {
+        cellText = [NSString stringWithFormat:@"%@(已接受)", taskModel.title];
+    }
+    else {
+        cellText = [NSString stringWithFormat:@"%@(已完成)", taskModel.title];
+    }
+    
+    cell.textLabel.text = cellText;
+    
+//    if (taskModel.status == BRTaskStatus_Finished) {
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
+//    else {
+//        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//    }
+    
     return cell;
 }
 
@@ -134,9 +154,10 @@
     }
 }
 
-- (void)onRemoveSingleTaskDialog:(BRSingleTaskDialog *)taskDialog
+- (void)onRemoveDialog:(BRSingleTaskDialog *)taskDialog
 {
     self.singleTaskDialog = nil;
+    [self.tableView reloadData];
 }
 
 @end
