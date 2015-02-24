@@ -23,13 +23,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Road/BRDialog.m"
-            timestampString = "446357956.534462"
+            filePath = "Road/main.m"
+            timestampString = "446435969.517163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-touchesEnded:withEvent:"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "UncaughtExceptionHandler()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Road/BRSingleTaskDialog.m"
+            timestampString = "446438496.26212"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -39,13 +55,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Road/BRScene.m"
-            timestampString = "446310067.009659"
+            filePath = "Road/BRSingleTaskDialog.m"
+            timestampString = "446438652.154263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
-            landmarkName = "-onTapMap:"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-okAct"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -55,13 +71,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Road/BRDialog.m"
-            timestampString = "446357956.534462"
+            filePath = "Road/BRSingleTaskDialog.m"
+            timestampString = "446438698.771138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-onRemoveDialog:"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-hide"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

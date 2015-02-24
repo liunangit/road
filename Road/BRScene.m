@@ -147,23 +147,20 @@
 
 - (void)setupScene
 {
-    if (self.mapImageView) {
-        [self.mapImageView removeFromSuperview];
-        self.mapImageView = nil;
+    if (!self.mapImageView) {
+        UIImage *mapImage = [UIImage imageNamed:self.mapModel.mapFile];
+        if (!mapImage) {
+            return;
+        }
+        CGRect mapImageViewRect = [self mapViewSizeWithImageSize:mapImage.size];
+        self.mapImageView = [[UIImageView alloc] initWithFrame:mapImageViewRect];
+        self.mapImageView.userInteractionEnabled = YES;
+        [self.view addSubview:self.mapImageView];
+        
+        self.mapImageView.image = mapImage;
+        self.mapModel.mapSize = self.mapImageView.bounds.size;
+        
     }
-    
-    UIImage *mapImage = [UIImage imageNamed:self.mapModel.mapFile];
-    if (!mapImage) {
-        return;
-    }
-    
-    CGRect mapImageViewRect = [self mapViewSizeWithImageSize:mapImage.size];
-    self.mapImageView = [[UIImageView alloc] initWithFrame:mapImageViewRect];
-    self.mapImageView.userInteractionEnabled = YES;
-    [self.view addSubview:self.mapImageView];
-    
-    self.mapImageView.image = mapImage;
-    self.mapModel.mapSize = self.mapImageView.bounds.size;
     
     if (self.tapGestureRecognizer) {
         [self.mapImageView removeGestureRecognizer:self.tapGestureRecognizer];

@@ -21,6 +21,11 @@
 
 @implementation BRSingleTaskDialog
 
+- (void)dealloc
+{
+    
+}
+
 - (void)setupUIAtTaskArea:(BOOL)atTaskArea withView:(UIView *)view
 {
     self.frame = view.bounds;
@@ -49,7 +54,9 @@
     }
     textView.font = [UIFont systemFontOfSize:15];
     textView.editable = NO;
-    textView.selectable = NO;
+    if ([textView respondsToSelector:@selector(setSelectable:)]) {
+        textView.selectable = NO;
+    }
     [containerView addSubview:textView];
     
     UIButton *okBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -120,8 +127,8 @@
 {
     if (self.atBattleZone) {
         self.taskModel.status = BRTaskStatus_Done;
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTaskDoneNotification object:self.taskModel];
         [[BRPlayerManager defaultManager] addDate:self.taskModel.costTime];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTaskDoneNotification object:self.taskModel];
     }
     else {
         if (self.taskModel.status == BRTaskStatus_New) {
