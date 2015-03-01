@@ -16,6 +16,7 @@ typedef enum _BRFaction {
 
 @interface BRAreaModel : NSObject
 
+@property (nonatomic) NSString *areaID;
 @property (nonatomic) NSUInteger xScale;
 @property (nonatomic) NSUInteger yScale;
 @property (nonatomic) NSUInteger widthScale;
@@ -23,5 +24,8 @@ typedef enum _BRFaction {
 @property (nonatomic) CGSize mapSize;
 @property (nonatomic, readonly) CGRect rectInMap;
 @property (nonatomic) BRFaction faction;
+@property (nonatomic) NSArray *reachable;
+
+- (BOOL)rachableTo:(BRAreaModel *)area;
 
 @end

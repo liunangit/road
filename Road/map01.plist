@@ -15,6 +15,8 @@
 			<string>湖畔镇</string>
 			<key>Area</key>
 			<dict>
+				<key>ID</key>
+				<string>0</string>
 				<key>X</key>
 				<integer>200</integer>
 				<key>Y</key>
@@ -25,6 +27,13 @@
 				<integer>120</integer>
 				<key>Faction</key>
 				<integer>2</integer>
+				<key>Reachable</key>
+				<array>
+					<string>1</string>
+					<string>3</string>
+					<string>4</string>
+					<string>5</string>
+				</array>
 			</dict>
 			<key>Tasks</key>
 			<array>
@@ -45,6 +54,8 @@
 			<string></string>
 			<key>Area</key>
 			<dict>
+				<key>ID</key>
+				<string>1</string>
 				<key>X</key>
 				<integer>250</integer>
 				<key>Y</key>
@@ -55,6 +66,12 @@
 				<integer>100</integer>
 				<key>Faction</key>
 				<integer>0</integer>
+				<key>Reachable</key>
+				<array>
+					<string>0</string>
+					<string>4</string>
+					<string>5</string>
+				</array>
 			</dict>
 			<key>Tasks</key>
 			<array>
@@ -68,6 +85,8 @@
 			<string></string>
 			<key>Area</key>
 			<dict>
+				<key>ID</key>
+				<string>2</string>
 				<key>X</key>
 				<integer>700</integer>
 				<key>Y</key>
@@ -78,6 +97,13 @@
 				<integer>100</integer>
 				<key>Faction</key>
 				<integer>0</integer>
+				<key>Reachable</key>
+				<array>
+					<string>0</string>
+					<string>1</string>
+					<string>4</string>
+					<string>5</string>
+				</array>
 			</dict>
 			<key>Tasks</key>
 			<array>
@@ -91,6 +117,8 @@
 			<string></string>
 			<key>Area</key>
 			<dict>
+				<key>ID</key>
+				<string>3</string>
 				<key>X</key>
 				<integer>400</integer>
 				<key>Y</key>
@@ -101,6 +129,10 @@
 				<integer>100</integer>
 				<key>Faction</key>
 				<integer>0</integer>
+				<key>Reachable</key>
+				<array>
+					<string>0</string>
+				</array>
 			</dict>
 			<key>Tasks</key>
 			<array>
@@ -114,6 +146,8 @@
 			<string></string>
 			<key>Area</key>
 			<dict>
+				<key>ID</key>
+				<string>4</string>
 				<key>X</key>
 				<integer>400</integer>
 				<key>Y</key>
@@ -124,6 +158,12 @@
 				<integer>100</integer>
 				<key>Faction</key>
 				<integer>0</integer>
+				<key>Reachable</key>
+				<array>
+					<string>0</string>
+					<string>1</string>
+					<string>5</string>
+				</array>
 			</dict>
 			<key>Tasks</key>
 			<array>
@@ -137,6 +177,8 @@
 			<string></string>
 			<key>Area</key>
 			<dict>
+				<key>ID</key>
+				<string>5</string>
 				<key>X</key>
 				<integer>500</integer>
 				<key>Y</key>
@@ -147,6 +189,13 @@
 				<integer>100</integer>
 				<key>Faction</key>
 				<integer>0</integer>
+				<key>Reachable</key>
+				<array>
+					<string>0</string>
+					<string>1</string>
+					<string>2</string>
+					<string>4</string>
+				</array>
 			</dict>
 			<key>Tasks</key>
 			<array>

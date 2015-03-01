@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class BRAreaModel;
+
 #define kPlayerDateDidChangedNotification @"kPlayerDateDidChangedNotification"
 
 @interface BRPlayerManager : NSObject
 
 @property (nonatomic, readonly) NSInteger currentDate;
 @property (nonatomic, readonly) NSString *currentDateStr;
+@property (nonatomic) BRAreaModel *location;
 
 + (id)defaultManager;
 - (void)addDate:(NSInteger)date;

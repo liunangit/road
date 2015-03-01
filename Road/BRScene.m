@@ -16,8 +16,10 @@
 #import "BRPublishHeader.h"
 #import "BRStatusBar.h"
 #import "BRUtils.h"
+#import "BRPlayerManager.h"
+#import "BRAreaView.h"
 
-//#define DEBUG_AREA_LOCALTION
+#define DEBUG_AREA_LOCALTION
 
 @interface BRScene () <BRDialogDelegate, UIGestureRecognizerDelegate>
 
@@ -26,6 +28,7 @@
 @property (nonatomic, strong) UIImageView *mapImageView;
 @property (nonatomic, strong) BRStatusBar *statusBar;
 @property (nonatomic, weak) UIView *overlay;
+@property (nonatomic, strong) NSMutableDictionary *areaViewDic; //{areaID:areaView}
 
 @end
 
@@ -74,6 +77,8 @@
     mapModel.mapFile = mapData[@"Map"];
     mapModel.townList = [self parseTownModel:mapData[@"Towns"]];
     mapModel.taskZoneList = [self parseTaskZones:mapData[@"TaskZones"]];
+    
+    [[BRPlayerManager defaultManager] setLocation:[mapModel.townList.firstObject area]];
     return mapModel;
 }
 
@@ -122,11 +127,13 @@
     }
     
     BRAreaModel *areaModel = [[BRAreaModel alloc] init];
+    areaModel.areaID = areaDic[@"ID"];
     areaModel.xScale = [areaDic[@"X"] unsignedIntegerValue];
     areaModel.yScale = [areaDic[@"Y"] unsignedIntegerValue];
     areaModel.widthScale = [areaDic[@"Width"] unsignedIntegerValue];
     areaModel.heightScale = [areaDic[@"Height"] unsignedIntegerValue];
     areaModel.faction = (BRFaction)[areaDic[@"Faction"] integerValue];
+    areaModel.reachable = areaDic[@"Reachable"];
     return areaModel;
 }
 
@@ -170,50 +177,44 @@
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapMap:)];
     self.tapGestureRecognizer.delegate = self;
     [self.mapImageView addGestureRecognizer:self.tapGestureRecognizer];
-    [self refreshFactions];
-  }
+    
+    [self refreshAreaViews];
+}
 
-- (void)refreshFactions
+- (void)refreshAreaViews
 {
+    if (!self.areaViewDic) {
+        self.areaViewDic = [NSMutableDictionary dictionary];
+    }
+    
     for (BRTownModel *model in self.mapModel.townList) {
-#ifdef DEBUG_AREA_LOCALTION
-        UIView *v = [[UIView alloc] initWithFrame:model.area.rectInMap];
-        v.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f];
-        [self.mapImageView addSubview:v];
-#endif
-        [self setupFactionWithArea:model.area inMap:self.mapImageView];
+        [self refreshAreaView:model.area withMap:self.mapImageView];
     }
  
     for (BRTaskZoneModel *model in self.mapModel.taskZoneList) {
-#ifdef DEBUG_AREA_LOCALTION
-        UIView *v = [[UIView alloc] initWithFrame:model.area.rectInMap];
-        v.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f];
-        [self.mapImageView addSubview:v];
-#endif
-        [self setupFactionWithArea:model.area inMap:self.mapImageView];
+        [self refreshAreaView:model.area withMap:self.mapImageView];
     }
 }
 
-- (void)setupFactionWithArea:(BRAreaModel *)area inMap:(UIView *)map
+- (void)refreshAreaView:(BRAreaModel *)area withMap:(UIView *)map
 {
-    static CGFloat factionSize = 30.0f;
-    UIImageView *factionImageView = [[UIImageView alloc] initWithFrame:CGRectMake((area.rectInMap.size.width - factionSize)/2 + area.rectInMap.origin.x, (area.rectInMap.size.height- factionSize)/2 + area.rectInMap.origin.y, factionSize, factionSize)];
-    factionImageView.alpha = 0.8f;
-    NSString *imageName = nil;
-    
-    switch (area.faction) {
-        case Horde:
-            imageName = @"horde.png";
-            break;
-        case Alliance:
-            imageName = @"alliance.png";
-            break;
-        default:
-            imageName = @"neutral.png";
-            break;
+    BRAreaView *areaView = self.areaViewDic[area.areaID];
+    if (!areaView) {
+        areaView = [[BRAreaView alloc] initWithMap:map];
+        self.areaViewDic[area.areaID] = areaView;
+        [map addSubview:areaView];
     }
-    factionImageView.image = [UIImage imageNamed:imageName];
-    [map addSubview:factionImageView];
+    areaView.areaModel = area;
+    
+    BRPlayerManager *playerManager = [BRPlayerManager defaultManager];
+    BRAreaModel *playerLocation = playerManager.location;
+    areaView.isPlayerLocation = [playerLocation.areaID isEqualToString:area.areaID];
+
+#ifdef DEBUG_AREA_LOCALTION
+    areaView.isAreaViewVisible = YES;
+#else
+    areaView.isAreaViewVisible = NO;
+#endif
 }
 
 - (CGRect)mapViewSizeWithImageSize:(CGSize)mapSize
@@ -247,16 +248,35 @@
     return mapViewFrame;
 }
 
+- (BOOL)playerCanReachableToTown:(BRTownModel *)townModel
+{
+    BRPlayerManager *playerManager = [BRPlayerManager defaultManager];
+    BRAreaModel *playerLocation = playerManager.location;
+    if (playerLocation == townModel.area) {
+        return YES;
+    }
+    return [playerLocation rachableTo:townModel.area];
+}
+
+- (BOOL)playerCanReachableToTaskZone:(BRTaskZoneModel *)taskZoneModel
+{
+    BRPlayerManager *playerManager = [BRPlayerManager defaultManager];
+    BRAreaModel *playerLocation = playerManager.location;
+    return [playerLocation rachableTo:taskZoneModel.area];
+}
+
 - (void)onTapMap:(UITapGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:sender.view];
     for (BRTownModel *townModel in self.mapModel.townList) {
         if (CGRectContainsPoint(townModel.area.rectInMap, point)) {
-            BRDialog *dialog = [[BRDialog alloc] init];
-            dialog.delegate = self;
-            dialog.townModel = townModel;
-            self.overlay = dialog;
-            [dialog showInView:self.view];
+            if ([self playerCanReachableToTown:townModel]) {
+                BRDialog *dialog = [[BRDialog alloc] init];
+                dialog.delegate = self;
+                dialog.townModel = townModel;
+                self.overlay = dialog;
+                [dialog showInView:self.view];
+            }
             return;
         }
     }
@@ -268,11 +288,14 @@
                 taskModel.status == BRTaskStatus_Finished) {
                 return;
             }
-            BRSingleTaskDialog *taskDialog = [[BRSingleTaskDialog alloc] init];
-            taskDialog.taskModel = taskModel;
-            taskDialog.delegate = self;
-            self.overlay = taskDialog;
-            [taskDialog showInMap:self.mapImageView];
+            
+            if ([self playerCanReachableToTaskZone:taskZone]) {
+                BRSingleTaskDialog *taskDialog = [[BRSingleTaskDialog alloc] init];
+                taskDialog.taskModel = taskModel;
+                taskDialog.delegate = self;
+                self.overlay = taskDialog;
+                [taskDialog showInMap:self.mapImageView];
+            }
             return;
         }
     }
@@ -300,6 +323,7 @@
         BRTaskModel *taskModel = [[BRTaskManger defaultManager] taskWithID:[taskZone.tasks firstObject]];
         if ([taskModel.taskID isEqualToString:doneModel.taskID]) {
             taskZone.area.faction = Alliance;
+            [[BRPlayerManager defaultManager] setLocation:taskZone.area];
             break;
         }
     }

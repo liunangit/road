@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class BRAreaModel;
+
 @interface BRPlayerModel : NSObject
 
 @property (nonatomic) NSInteger date;
+@property (nonatomic, strong) BRAreaModel *location;
 
 @end

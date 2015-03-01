@@ -27,6 +27,7 @@
 		59A813C51A8717FC0014AFC6 /* BRTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813C41A8717FC0014AFC6 /* BRTaskModel.m */; };
 		59A813C81A8718990014AFC6 /* BRTownModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A813C71A8718990014AFC6 /* BRTownModel.m */; };
 		59A813CA1A871A5F0014AFC6 /* map01.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59A813C91A871A5F0014AFC6 /* map01.plist */; };
+		59E2C2151AA3194000B9B8DD /* BRAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E2C2141AA3194000B9B8DD /* BRAreaView.m */; };
 		B2DF5A121A887F1F00318C95 /* task.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2DF5A111A887F1F00318C95 /* task.plist */; };
 		B2DF5A151A8882AE00318C95 /* BRTaskManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF5A141A8882AE00318C95 /* BRTaskManger.m */; };
 		B2DF5A181A8885DA00318C95 /* BRAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF5A171A8885DA00318C95 /* BRAreaModel.m */; };
@@ -69,6 +70,8 @@
 		59A813C61A8718990014AFC6 /* BRTownModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRTownModel.h; sourceTree = "<group>"; };
 		59A813C71A8718990014AFC6 /* BRTownModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRTownModel.m; sourceTree = "<group>"; };
 		59A813C91A871A5F0014AFC6 /* map01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = map01.plist; sourceTree = "<group>"; };
+		59E2C2131AA3194000B9B8DD /* BRAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRAreaView.h; sourceTree = "<group>"; };
+		59E2C2141AA3194000B9B8DD /* BRAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAreaView.m; sourceTree = "<group>"; };
 		B2DF5A111A887F1F00318C95 /* task.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = task.plist; sourceTree = "<group>"; };
 		B2DF5A131A8882AE00318C95 /* BRTaskManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRTaskManger.h; sourceTree = "<group>"; };
 		B2DF5A141A8882AE00318C95 /* BRTaskManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRTaskManger.m; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				59A813C11A8717E90014AFC6 /* BRMapModel.m */,
 				B2DF5A161A8885DA00318C95 /* BRAreaModel.h */,
 				B2DF5A171A8885DA00318C95 /* BRAreaModel.m */,
+				59E2C2131AA3194000B9B8DD /* BRAreaView.h */,
+				59E2C2141AA3194000B9B8DD /* BRAreaView.m */,
 				59A813C61A8718990014AFC6 /* BRTownModel.h */,
 				59A813C71A8718990014AFC6 /* BRTownModel.m */,
 				5979B6B81A975FAF00D60A40 /* BRTaskZoneModel.h */,
@@ -260,6 +265,7 @@
 				5979B6BE1A981F7000D60A40 /* BRStatusBar.m in Sources */,
 				59A813971A87091C0014AFC6 /* AppDelegate.m in Sources */,
 				59A813C81A8718990014AFC6 /* BRTownModel.m in Sources */,
+				59E2C2151AA3194000B9B8DD /* BRAreaView.m in Sources */,
 				59A813BD1A870A120014AFC6 /* BRScene.m in Sources */,
 				59A813C21A8717E90014AFC6 /* BRMapModel.m in Sources */,
 				59A813941A87091C0014AFC6 /* main.m in Sources */,

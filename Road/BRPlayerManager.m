@@ -60,4 +60,14 @@
     return [NSString stringWithFormat:@"%zd年%zd月%zd日", year, month, day];
 }
 
+- (BRAreaModel *)location
+{
+    return self.player.location;
+}
+
+- (void)setLocation:(BRAreaModel *)location
+{
+    self.player.location = location;
+}
+
 @end

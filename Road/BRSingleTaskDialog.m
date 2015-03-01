@@ -127,7 +127,8 @@
 {
     if (self.atBattleZone) {
         self.taskModel.status = BRTaskStatus_Done;
-        [[BRPlayerManager defaultManager] addDate:self.taskModel.costTime];
+        BRPlayerManager *playerManager = [BRPlayerManager defaultManager];
+        [playerManager addDate:self.taskModel.costTime];
         [[NSNotificationCenter defaultCenter] postNotificationName:kTaskDoneNotification object:self.taskModel];
     }
     else {

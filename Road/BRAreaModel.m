@@ -30,4 +30,9 @@
     return self.rect;
 }
 
+- (BOOL)rachableTo:(BRAreaModel *)area
+{
+    return [self.reachable containsObject:area.areaID];
+}
+
 @end
